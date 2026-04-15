@@ -1,0 +1,420 @@
+/* ================================
+   🖼️ Thumbnail ảnh đồng đều + hover
+=================================== */
+.blog-post-two_thumb {
+  display: block;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.blog-post-two_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.blog-post-two_thumb:hover img {
+  transform: scale(1.06);
+}
+
+/* Icon vali */
+.blog-post-two_format {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #b87b4c;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 6px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================
+   📋 Card Content
+=================================== */
+.blog-post-two__content {
+  margin-top: 15px;
+  padding: 0 2px;
+}
+
+.blog-post-two__meta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.blog-post-two__meta li {
+  display: inline-block;
+  margin-right: 5px;
+  color: #7a7a7a;
+}
+
+.blog-post-two__title {
+  font-size: 1.3rem;
+  margin: 5px 0 10px 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.blog-post-two__title a {
+  color: #111;
+  text-decoration: none;
+}
+
+.blog-post-two__title a:hover {
+  color: #b87b4c;
+}
+
+/* ================================
+   🧾 Thông tin phụ
+=================================== */
+.job-info {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 10px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #4b4b4b;
+}
+
+.job-info li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.job-info i {
+  font-size: 1rem;
+  color: #b87b4c;
+}
+
+/* ================================
+   💰 Mức lương + nút Read More
+=================================== */
+.salary {
+  color: #b87b4c;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+}
+
+.blog-post-two__btn {
+  font-size: 0.9rem;
+  color: #111;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.blog-post-two__btn:hover {
+  color: #b87b4c;
+  transform: translateX(3px);
+}
+
+/* ============================
+   🌟 Field Section Layout
+============================ */
+.field-section {
+  text-align: center;
+}
+
+.section-title {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ============================
+   🧭 Swiper Layout
+============================ */
+.field-section {
+  text-align: center;
+}
+
+.field-swiper {
+  position: relative;
+  padding: 25px 55px 35px;
+}
+
+.swiper-slide {
+  transition: transform 0.3s ease;
+}
+
+.field-card {
+  width: 200px !important;
+  height: 180px;
+  cursor: grab;
+}
+
+.field-card .card-inner {
+  background: #f8f9fc;
+  border-radius: 14px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.field-card .icon {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b87b4c;
+  font-size: 1.6rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.field-card h6 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.field-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.field-card:hover .card-inner {
+  transform: translateY(-4px);
+  background: #fff;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+}
+
+.field-card.active .card-inner {
+  border: 2px solid #b87b4c;
+  background: #fff9f3;
+}
+/* Ẩn mũi tên mặc định Swiper khi không có class custom */
+.swiper-button-prev:not(.custom-prev),
+.swiper-button-next:not(.custom-next) {
+  display: none !important;
+}
+
+/* ============================
+   🎯 Custom Navigation Arrows (final balanced version)
+============================ */
+.custom-prev,
+.custom-next {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #b87b4c;
+  color: #b87b4c;
+  font-size: 0.95rem; /* nhỏ hơn 1 chút cho cân icon */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0; /* giúp icon nằm chính giữa không lệch */
+  padding-left: 1px; /* tinh chỉnh cho cân tuyệt đối */
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  opacity: 0.9;
+}
+
+/* hover mượt */
+.custom-prev:hover,
+.custom-next:hover {
+  background: #b87b4c;
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(184, 123, 76, 0.35);
+  transform: translateY(-50%) scale(1.08);
+  opacity: 1;
+}
+
+/* vị trí mũi tên ngoài rìa slider */
+.custom-prev {
+  left: -40px;
+}
+
+.custom-next {
+  right: -40px;
+}
+
+/* ẩn icon mặc định của Swiper */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none !important;
+}
+
+/* hiệu ứng ẩn khi không hover vào slider (optional, đẹp hơn) */
+.field-slider-wrapper:hover .custom-prev,
+.field-slider-wrapper:hover .custom-next {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-prev,
+.custom-next {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.field-card:hover {
+  cursor: pointer;
+}
+
+.field-card:hover .card-inner {
+  transform: translateY(-4px);
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.field-card:hover .icon {
+  transition: all 0.3s ease;
+}
+
+/* ===========================================
+   🧭 Sticky Section (luôn cố định khi scroll)
+=========================================== */
+/* =====================================
+   🔝 Floating Sticky Career Fields (fixed + layout safe)
+===================================== */
+
+.sticky-section {
+  position: relative;
+  z-index: 10; /* thấp hơn header nhưng cao hơn job cards */
+  background: #fff;
+  transition: all 0.4s ease;
+}
+
+/* Khi sticky-active */
+.sticky-active {
+  position: fixed;
+  top: 80px; /* chỉnh theo chiều cao header của bạn */
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99;
+  background: #fff;
+  padding: 15px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.5s ease;
+}
+
+/* 🔧 giữ layout không bị co sụp khi sticky */
+.sticky-placeholder {
+  height: 160px; /* chiều cao tạm, bằng với section fields */
+}
+
+/* hiệu ứng trượt */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================
+   🎆 Title Animation “Career Fields”
+=========================================== */
+.animated-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #b87b4c;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  animation: fadeInUp 1s ease-out both;
+}
+
+/* Dòng dưới gạch highlight */
+.animated-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #b87b4c, #ffae70);
+  border-radius: 2px;
+  animation: underlineExpand 1.2s ease forwards 0.6s;
+}
+
+/* Hiệu ứng fade-in + slide lên */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hiệu ứng underline chạy ngang */
+@keyframes underlineExpand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 120px;
+  }
+}
+
+/* Hiệu ứng trượt */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Giữ chỗ layout khi sticky */
+.sticky-placeholder {
+  height: 140px; /* bằng chiều cao thực tế của slider */
+}
+
+/* ✅ QUAN TRỌNG: reset context cha */
+html,
+body,
+app-root,
+.blog-sidebar {
+  overflow: visible !important;
+  transform: none !important;
+  position: static !important;
+}
+
+:host ::ng-deep .field-slider-sticky.sticky-active {
+  position: fixed !important;
+}

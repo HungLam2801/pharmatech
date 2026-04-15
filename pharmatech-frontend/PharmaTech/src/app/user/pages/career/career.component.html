@@ -1,0 +1,213 @@
+<!-- =======================
+    🧭 Breadcrumb Section
+======================= -->
+<div class="breadcrumb" data-bg-image="assets/images/bg/profile1.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb_content">
+          <h1 class="breadcrumb_title">Career</h1>
+          <ul class="breadcrumb_list">
+            <li><a routerLink="/">Home</a></li>
+            <li>Career</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =======================
+    💼 CAREER FIELDS SECTION
+======================= -->
+<section
+  class="field-section mt-5 mb-5"
+  *ngIf="!loading && fields.length > 0"
+  data-aos="fade-up"
+>
+  <div class="container">
+    <h4 class="section-title animated-title mb-4" data-aos="fade-up">
+      Career Fields
+    </h4>
+  </div>
+
+  <!-- ✅ Sticky riêng biệt (nằm ngoài container để fixed được) -->
+  <div class="field-slider-sticky">
+    <div class="container">
+      <div
+        class="field-slider-wrapper position-relative"
+        data-aos="zoom-in-up"
+        data-aos-delay="200"
+      >
+        <div class="swiper-button-prev custom-prev">
+          <i class="pi pi-angle-left"></i>
+        </div>
+        <div class="swiper-button-next custom-next">
+          <i class="pi pi-angle-right"></i>
+        </div>
+
+        <div class="swiper field-swiper">
+          <div class="swiper-wrapper">
+            <!-- All -->
+            <div
+              class="swiper-slide field-card"
+              [class.active]="!selectedField"
+              (click)="filterByField(null)"
+            >
+              <div class="card-inner">
+                <div class="icon"><i class="pi pi-globe"></i></div>
+                <h6>All</h6>
+                <p>{{ careers.length }} Jobs</p>
+              </div>
+            </div>
+
+            <!-- Dynamic Fields -->
+            <div
+              class="swiper-slide field-card"
+              *ngFor="let f of fields"
+              [class.active]="selectedField === f.name"
+              (click)="filterByField(f.name)"
+            >
+              <div class="card-inner">
+                <div class="icon"><i class="pi pi-briefcase"></i></div>
+                <h6>{{ f.name }}</h6>
+                <p>{{ f.total }} Jobs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =======================
+    🧾 JOB LIST SECTION
+======================= -->
+<div class="blog-sidebar blog-sidebar-right">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 section-padding-04">
+        <!-- Loading -->
+        <div *ngIf="loading" class="text-center py-5">
+          <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+          <p>Loading job postings...</p>
+        </div>
+
+        <!-- Job List -->
+        <div
+          class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-3 gx-lg-5 gx-xxl-12"
+          *ngIf="!loading && filteredCareers.length > 0"
+        >
+          <div
+            class="cols"
+            *ngFor="let job of filteredCareers; let i = index"
+            [attr.data-aos]="'fade-up'"
+            [attr.data-aos-delay]="i * 100"
+          >
+            <div class="blog-post-two">
+              <!-- Thumbnail -->
+              <a
+                [routerLink]="['/careerDetails', job.id]"
+                class="blog-post-two_thumb"
+              >
+                <img
+                  [src]="
+                    job.banner && job.banner !== ''
+                      ? job.banner
+                      : 'assets/images/blog/blog-grid-01.jpg'
+                  "
+                  [alt]="job.title"
+                />
+                <span class="blog-post-two_format">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    fill="currentColor"
+                    class="bi bi-briefcase"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M0 4a2 2 0 0 1 2-2h2V1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zM6 1v1h4V1H6zm9 3H1v2h14V4zM1 6v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6H1z"
+                    />
+                  </svg>
+                </span>
+              </a>
+
+              <!-- Content -->
+              <div class="blog-post-two__content">
+                <ul class="blog-post-two__meta">
+                  <li>{{ job.department || "General" }}</li>
+                  <li>-</li>
+                  <li>
+                    <span>{{ job.posted_date | date : "MMM dd, yyyy" }}</span>
+                  </li>
+                </ul>
+
+                <h3 class="blog-post-two__title">
+                  <a [routerLink]="['/careerDetails', job.id]">{{
+                    job.title
+                  }}</a>
+                </h3>
+
+                <ul class="job-info">
+                  <li>
+                    <i class="las la-map-marker-alt"></i>
+                    {{ job.location || "N/A" }}
+                  </li>
+                  <li>
+                    <i class="las la-briefcase"></i>
+                    {{ job.level || "All levels" }}
+                  </li>
+                  <li>
+                    <i class="las la-user-clock"></i>
+                    {{ job.experience || "No experience required" }}
+                  </li>
+                  <li>
+                    <i class="las la-clock"></i>
+                    Expire: {{ job.expiration_date | date : "MMM dd, yyyy" }}
+                  </li>
+                </ul>
+
+                <p class="salary">
+                  <i class="las la-coins"></i>
+                  {{ job.salary_range || "Negotiable" }}
+                </p>
+
+                <a
+                  [routerLink]="['/careerDetails', job.id]"
+                  class="blog-post-two__btn"
+                >
+                  READ MORE
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="16"
+                      fill="none"
+                      viewBox="0 0 44 16"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M43.707 8.707a1 1 0 0 0 0-1.414L37.343.929a1 1 0 1 0-1.414 1.414L41.586 8l-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM0 9h43V7H0v2z"
+                      />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty -->
+        <div
+          *ngIf="!loading && filteredCareers.length === 0"
+          class="text-center py-5"
+        >
+          <h5>No job postings available.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
